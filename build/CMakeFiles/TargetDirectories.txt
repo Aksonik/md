@@ -1,0 +1,3 @@
+/home/nawrocki/Documents/scr/git/cpp_project/md/md/build/CMakeFiles/edit_cache.dir
+/home/nawrocki/Documents/scr/git/cpp_project/md/md/build/CMakeFiles/rebuild_cache.dir
+/home/nawrocki/Documents/scr/git/cpp_project/md/md/build/CMakeFiles/md_program.dir
