@@ -1,8 +1,6 @@
-# MD project
+# MD
+
+This is a program for running simple molecular dynamics simulations.
 
 ### TO-DO-LIST:
-generate random velocities according to Boltzmann distribution for a given temperature.
-constructors
-public/private
-allocate, free memeory
-
+Generate random velocities according to Boltzmann distribution for a given temperature.
