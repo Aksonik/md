@@ -1,0 +1,11 @@
+# VMD for LINUXAMD64, version 1.9.2beta1 (September 12, 2014)
+# Log file '/home/nawrocki/Documents/scr/git/cpp_project/md/md/scr.vmd', created by user nawrocki
+display projection Orthographic
+menu graphics off
+menu graphics on
+mol modstyle 0 0 CPK 1.000000 0.300000 12.000000 12.000000
+mol modstyle 0 0 CPK 2.000000 0.300000 12.000000 12.000000
+mol modstyle 0 0 CPK 3.000000 0.300000 12.000000 12.000000
+menu graphics off
+# VMD for LINUXAMD64, version 1.9.2beta1 (September 12, 2014)
+# end of log file.

@@ -1,0 +1,3 @@
+steps: 1005
+time step: 0.005
+box size: 30.0 30.0 30.0
