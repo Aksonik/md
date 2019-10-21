@@ -9,7 +9,7 @@ CMakeFiles/md_program.dir/src/leapFrog.cpp.o
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/leapFrog.h
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h
 CMakeFiles/md_program.dir/src/main.cpp.o
- ../include/distance.h
+ ../include/useful.h
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/genVel.h
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/leapFrog.h
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/main.cpp
@@ -17,6 +17,7 @@ CMakeFiles/md_program.dir/src/main.cpp.o
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readOpt.h
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h
 CMakeFiles/md_program.dir/src/readFF.cpp.o
+ ../include/useful.h
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readFF.cpp
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readFF.h
 CMakeFiles/md_program.dir/src/readOpt.cpp.o

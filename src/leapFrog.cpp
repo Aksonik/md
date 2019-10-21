@@ -11,17 +11,17 @@ using namespace std; 	// cout instead of std::cout
 
 double f[3];
 
-void writeXYZ(int t,double **xyz){
+void leapFrogClass::writeXYZ(int t, double **xyz, int num){
  FILE* outputFile=fopen("traj.xyz","a");	// append
- fprintf(outputFile,"%i\n",9);
+ fprintf(outputFile,"%i\n",num);
  fprintf(outputFile,"box\n");
- for(int p=0;p<=8;p++){
-  fprintf(outputFile,"N %f %f %f\n",xyz[p][0],xyz[p][1],xyz[p][2]);
+ for(int p=0;p<num;p++){
+  fprintf(outputFile,"%c %f %f %f\n",type[p],xyz[p][0],xyz[p][1],xyz[p][2]);
  }
  fclose(outputFile);
 }
 
-double* force(int t, int p1, double **xyz, double *sig, double *eps){
+double* force(int t, int p1, double **xyz, double *sig, double *eps, int num){
 
 /* calculates force acting on a particular atom */
 
@@ -29,7 +29,7 @@ double* force(int t, int p1, double **xyz, double *sig, double *eps){
    f[1]=0.000;
    f[2]=0.000;
 
-   for(int p2=0;p2<=8;p2++){
+   for(int p2=0;p2<num;p2++){
     if(p1!=p2){
      double dx=xyz[p1][0]-xyz[p2][0];
      double dy=xyz[p1][1]-xyz[p2][1];
@@ -78,15 +78,13 @@ void pbc(double *xyz){
  }
 }
 
-void leapFrogClass::step(double dt, int steps, double **xyz, double *mass, double *sig, double *eps, double **vel){
-
-// double dt=0.002;
+void leapFrogClass::step(double dt, int steps, double **xyz, double *mass, double *sig, double *eps, double **vel, int num){
 
  for(int t=1;t<=steps;t++){
-  for(int p=0;p<=8;p++){
+  for(int p=0;p<num;p++){
 
 //   force(t,p,xyz);
-   double* ptrForce=force(t,p,xyz,sig,eps);
+   double* ptrForce=force(t,p,xyz,sig,eps,num);
 //   printf("Force: %f %f %f\n",ptrForce[0],ptrForce[1],ptrForce[2]);
 
    vel[p][0]=vel[p][0]+0.5*dt*ptrForce[0]/mass[p];
@@ -100,7 +98,7 @@ void leapFrogClass::step(double dt, int steps, double **xyz, double *mass, doubl
    pbc(xyz[p]);
 
   }
-  writeXYZ(t,xyz);
+  leapFrogClass::writeXYZ(t,xyz,num);
  }
 
 }

@@ -6,8 +6,10 @@
 
 #IncludeRegexTransform: 
 
-../include/distance.h
+../include/useful.h
 math.h
+-
+string
 -
 
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/genVel.cpp
@@ -53,7 +55,9 @@ stdlib.h
 -
 unistd.h
 -
-distance.h
+string
+-
+useful.h
 -
 readXYZ.h
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h
@@ -75,10 +79,14 @@ unistd.h
 -
 string
 -
+useful.h
+-
 readFF.h
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readFF.h
 
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readFF.h
+string
+-
 
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readOpt.cpp
 iostream
@@ -95,6 +103,8 @@ readOpt.h
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readOpt.h
 
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readOpt.h
+string
+-
 
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.cpp
 stdio.h
@@ -109,4 +119,6 @@ readXYZ.h
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h
 
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h
+string
+-
 

@@ -1,1 +1,4 @@
-input file: /home/nawrocki/Documents/scr/git/cpp_project/md/md/test/sys.xyz
+initial: test/sys.xyz 
+force field: test/sys.ff
+steps: 1005
+time step: 0.002

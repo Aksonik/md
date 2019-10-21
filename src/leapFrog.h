@@ -2,9 +2,12 @@
 #define LEAPFROG_H
 
 namespace leapFrogName{
- class leapFrogClass{
+ class leapFrogClass { 
+
   public:
-   void step(double, int, double**, double*, double*, double*, double**);
+   char* type;
+   void writeXYZ(int, double**, int);
+   void step(double, int, double**, double*, double*, double*, double**, int);
  };
 }
 

@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <distance.h>
+#include <string>
+#include <useful.h>
 #include "readXYZ.h"
 #include "leapFrog.h"
 #include "readOpt.h"
@@ -17,19 +18,28 @@ using namespace genVelName;
 
 int main(int argc,char *argv[]){
 
-/* 
- to read input from command line and apply libraries
+/* run with a path to the option file as an argument*/
+string optFile=argv[1];
+printf("Options file: %s\n",optFile.c_str());
 
- double n1=atof(argv[1]);
- double n2=atof(argv[2]);
+/* default options */ 
+ int steps=0;
+ double dt=0.002;
+ string initXYZ="init.xyz";
+ string FF="ff.dat";
 
- printf("input: %f %f\n",n1,n2);
+ readOptClass objectOpt;
+ objectOpt.optFile=optFile;
+ objectOpt.getOpt(steps,dt,initXYZ,FF);	// set options from the options file
 
- usefulClass usefulObject;
- printf("distance: %f\n",usefulObject.distanceFunction(n1,n1,n1,n2,n2,n2));
-*/
+ printf("Number of steps: %i\n",steps);
+ printf("Time step: %f\n",dt);
+ printf("Initial structure: %s\n",initXYZ.c_str());
+ printf("Force field: %s\n",FF.c_str());
 
- readXYZClass xyzObject;
+/* read initial structure */
+ readXYZClass xyzObject;	// xyzObject(var) would pass var to the constructor readXYZClass
+ xyzObject.initXYZ=initXYZ.c_str();
 
  int num=xyzObject.getNum();
  printf("Number of atoms: %i\n",num);
@@ -52,24 +62,24 @@ int main(int argc,char *argv[]){
   eps[n]=100.000;
  }
 
- xyzObject.getXYZ(type);	// substitute atom types
+ xyzObject.getXYZ(num,type);	// substitute atom types
 
- for(int n=0;n<num;n++){
-  printf("Atom type: %c\n",type[n]);
- }
+// for(int n=0;n<num;n++){
+//  printf("Atom type: %c\n",type[n]);
+// }
 
-// xyzObject.getXYZ();
- double** xyzPtr=xyzObject.getXYZ(type);
+ double** xyzPtr=xyzObject.getXYZ(num,type);
  for(int n=0;n<num;n++){
   printf("Coor: %f %f %f\n",xyzPtr[n][0],xyzPtr[n][1],xyzPtr[n][2]);
  }
 
 
  readFFClass objectFF;
+ objectFF.fileFF=FF;
  objectFF.setFF(num,type,mass,sig,eps);		// set FF parameters
 
  for(int n=0;n<num;n++){
-  printf("FF: %lf %lf %lf\n",mass[n],sig[n],eps[n]);
+  printf("FF: %c %lf %lf %lf\n",type[n],mass[n],sig[n],eps[n]);
  }
 
  genVelClass genVelObj;
@@ -79,19 +89,11 @@ int main(int argc,char *argv[]){
   printf("Vel: %f %f %f\n",velPtr[n][0],velPtr[n][1],velPtr[n][2]);
  }
 
-/* default options */ 
- int steps=0;
- double dt=0.002;
 
- readOptClass objectOpt;
- objectOpt.getOpt(steps,dt);		// substitute default options
- printf("Number of steps: %i\n",steps);
- printf("Time step: %f\n",dt);
 
  leapFrogClass leapFrogObject;
- leapFrogObject.step(dt,steps,xyzPtr,mass,sig,eps,velPtr);
-
-
+ leapFrogObject.type=type;
+ leapFrogObject.step(dt,steps,xyzPtr,mass,sig,eps,velPtr,num);
 
  return 0;
 }
