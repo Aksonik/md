@@ -1,8 +1,19 @@
 # MD
 
-This is a program for running simple molecular dynamics simulations.
+It runs simple molecular dynamics simulations 
+of particles interacting via Van der Waals forces. 
+Equations of motion are numerically integrated with Leapfrog algorithm. 
+It requires initial coordinates in VMD *xyz* format
+and produces a trajectory in the same format. 
+Size of the box needs to be set in the comment line, i.e. second. 
+Frames are saved every time step. 
+Initial velocities of the particles are generated randomly. 
+One can assign different masses and Lennard-Jones parameters (sigma and epsilon) 
+to different types of particles providing a force field file. 
+Desired time step and number of steps can be set in the options file. 
+It runs on a singe CPU. 
 
-### Installation
+### Compilation
 
 The installation requires *cmake*. 
 
@@ -18,7 +29,7 @@ The installation requires *cmake*.
 
 where *sys.opt* is an option file.
 
-### Option file
+### Options file
 
 ```
 initial: test/sys.xyz 
