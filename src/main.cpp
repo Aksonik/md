@@ -27,10 +27,11 @@ printf("Options file: %s\n",optFile.c_str());
  double dt=0.002;
  string initXYZ="init.xyz";
  string FF="ff.dat";
+ string trajectory="traj.xyz";
 
  readOptClass objectOpt;
  objectOpt.optFile=optFile;
- objectOpt.getOpt(steps,dt,initXYZ,FF);	// set options from the options file
+ objectOpt.getOpt(steps,dt,initXYZ,FF,trajectory);	// set options from the options file
 
  printf("Number of steps: %i\n",steps);
  printf("Time step: %f\n",dt);
@@ -93,6 +94,7 @@ printf("Options file: %s\n",optFile.c_str());
 
  leapFrogClass leapFrogObject;
  leapFrogObject.type=type;
+ leapFrogObject.trajectory=trajectory;
  leapFrogObject.step(dt,steps,xyzPtr,mass,sig,eps,velPtr,num);
 
  return 0;

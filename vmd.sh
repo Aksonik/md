@@ -1,1 +1,1 @@
-vmd -e vmd.vmd traj.xyz
+vmd -e vmd.vmd output/traj.xyz

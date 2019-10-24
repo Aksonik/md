@@ -1,0 +1,5 @@
+initial: input/sys.xyz 
+force field: input/sys.ff
+steps: 2005
+time step: 0.002
+trajectory: output/traj.xyz

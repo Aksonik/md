@@ -8,7 +8,7 @@
 using namespace std; 	// cout instead of std::cout
 using namespace readOptName;
 
-void readOptClass::getOpt(int &steps2, double &dt, string &initXYZ, string &FF2){
+void readOptClass::getOpt(int &steps2, double &dt, string &initXYZ, string &FF2, string &trajectory){
 /* reads the options file */
 
  int steps;
@@ -53,6 +53,9 @@ void readOptClass::getOpt(int &steps2, double &dt, string &initXYZ, string &FF2)
     {istringstream stoi(fileContent[2]);stoi>>box[0];}
     {istringstream stoi(fileContent[3]);stoi>>box[1];}
     {istringstream stoi(fileContent[4]);stoi>>box[2];}
+   }
+   if(fileContent[0]=="trajectory:"){
+    trajectory=fileContent[1];
    }
 
   }

@@ -1,4 +1,0 @@
-initial: test/sys.xyz 
-force field: test/sys.ff
-steps: 1005
-time step: 0.002

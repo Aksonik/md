@@ -32,13 +32,15 @@ where *sys.opt* is an option file.
 ### Options file
 
 ```
-initial: test/sys.xyz 
+initial: input/sys.xyz 
 
-force field: test/sys.ff
+force field: input/sys.ff
 
 steps: 1005
 
 time step: 0.002
+
+trajectory: output/traj.xyz
 ```
 
 where *sys.xyz* is an initial coordinates file and *sys.ff* in a force field file.

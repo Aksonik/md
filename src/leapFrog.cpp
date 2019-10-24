@@ -12,7 +12,7 @@ using namespace std; 	// cout instead of std::cout
 double f[3];
 
 void leapFrogClass::writeXYZ(int t, double **xyz, int num){
- FILE* outputFile=fopen("traj.xyz","a");	// append
+ FILE* outputFile=fopen(trajectory.c_str(),"a");	// append
  fprintf(outputFile,"%i\n",num);
  fprintf(outputFile,"box\n");
  for(int p=0;p<num;p++){
