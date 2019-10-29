@@ -1,5 +1,7 @@
 initial: input/sys.xyz 
 force field: input/sys.ff
-steps: 2005
+steps: 10000
 time step: 0.002
 trajectory: output/traj.xyz
+box size: 30.000 30.000 30.000
+save frequency: 10

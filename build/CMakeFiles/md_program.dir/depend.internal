@@ -7,6 +7,7 @@ CMakeFiles/md_program.dir/src/genVel.cpp.o
 CMakeFiles/md_program.dir/src/leapFrog.cpp.o
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/leapFrog.cpp
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/leapFrog.h
+ /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readOpt.h
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h
 CMakeFiles/md_program.dir/src/main.cpp.o
  ../include/useful.h
@@ -20,9 +21,12 @@ CMakeFiles/md_program.dir/src/readFF.cpp.o
  ../include/useful.h
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readFF.cpp
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readFF.h
+ /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readOpt.h
+ /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h
 CMakeFiles/md_program.dir/src/readOpt.cpp.o
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readOpt.cpp
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readOpt.h
 CMakeFiles/md_program.dir/src/readXYZ.cpp.o
+ /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readOpt.h
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.cpp
  /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h

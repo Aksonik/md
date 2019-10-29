@@ -6,6 +6,7 @@ CMakeFiles/md_program.dir/src/genVel.cpp.o: ../src/genVel.h
 
 CMakeFiles/md_program.dir/src/leapFrog.cpp.o: ../src/leapFrog.cpp
 CMakeFiles/md_program.dir/src/leapFrog.cpp.o: ../src/leapFrog.h
+CMakeFiles/md_program.dir/src/leapFrog.cpp.o: ../src/readOpt.h
 CMakeFiles/md_program.dir/src/leapFrog.cpp.o: ../src/readXYZ.h
 
 CMakeFiles/md_program.dir/src/main.cpp.o: ../include/useful.h
@@ -19,10 +20,13 @@ CMakeFiles/md_program.dir/src/main.cpp.o: ../src/readXYZ.h
 CMakeFiles/md_program.dir/src/readFF.cpp.o: ../include/useful.h
 CMakeFiles/md_program.dir/src/readFF.cpp.o: ../src/readFF.cpp
 CMakeFiles/md_program.dir/src/readFF.cpp.o: ../src/readFF.h
+CMakeFiles/md_program.dir/src/readFF.cpp.o: ../src/readOpt.h
+CMakeFiles/md_program.dir/src/readFF.cpp.o: ../src/readXYZ.h
 
 CMakeFiles/md_program.dir/src/readOpt.cpp.o: ../src/readOpt.cpp
 CMakeFiles/md_program.dir/src/readOpt.cpp.o: ../src/readOpt.h
 
+CMakeFiles/md_program.dir/src/readXYZ.cpp.o: ../src/readOpt.h
 CMakeFiles/md_program.dir/src/readXYZ.cpp.o: ../src/readXYZ.cpp
 CMakeFiles/md_program.dir/src/readXYZ.cpp.o: ../src/readXYZ.h
 

@@ -1,13 +1,24 @@
 #ifndef READFF_H
 #define READFF_H
 
-#include <string>
+//#include <string>
+#include "readXYZ.h"
+
+using namespace xyzName;
 
 namespace readFFName{
- class readFFClass{
+ class readFFClass : public readXYZClass{
   public:
-   std::string fileFF;
-   void setFF(int, char*, double*, double*, double*);
+   double* mass;
+   double* sig;
+   double* eps;
+
+   readFFClass(int num){
+    mass=new double[num];
+    sig=new double[num];
+    eps=new double[num];
+   };
+   void setFF(int,char*);
  };
 }
 
