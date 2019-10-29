@@ -4,11 +4,12 @@
 #include <string>
 #include <useful.h>
 #include "readFF.h"
+#include "readXYZ.h"
 
 using namespace readFFName;
 using namespace std; 	// cout instead of std::cout
 
-void readFFClass::setFF(int num,char *type,double *mass,double *sig,double *eps){
+void readFFClass::setFF(int num,char* type){
 /* reads FF parameters */
 
  int i=0;		// atom index
@@ -24,15 +25,14 @@ void readFFClass::setFF(int num,char *type,double *mass,double *sig,double *eps)
 
  FILE* inputFile=fopen(fileFF.c_str(),"r");
 
-/* doesn't work correctly when type is N */
+// doesn't work correctly when type is N
 
  while(!feof(inputFile)){
   if(fscanf(inputFile,"%c %lf %lf %lf",&typeFF[i],&massFF[i],&sigFF[i],&epsFF[i])==4){
-   printf("FF read: %c %lf %lf %lf\n",typeFF[i],massFF[i],sigFF[i],epsFF[i]);
+//   printf("FF read: %c %lf %lf %lf\n",typeFF[i],massFF[i],sigFF[i],epsFF[i]);
    i++;
   }
  }
-
  for(int n=0;n<num;n++){
   for(int m=0;m<numTypes;m++){
    if(type[n]==typeFF[m]){
@@ -42,6 +42,5 @@ void readFFClass::setFF(int num,char *type,double *mass,double *sig,double *eps)
    }
   }
  }
-
  fclose(inputFile);
 }

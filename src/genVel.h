@@ -4,7 +4,14 @@
 namespace genVelName{
  class genVelClass{
   public:
-   double** genVel(int);
+   double** vel;
+   genVelClass(int num){
+    vel=new double*[num];
+    for(int i=0;i<num;i++){
+     vel[i]=new double[3];
+    }
+   }
+   void genVel(int);
  };
 }
 

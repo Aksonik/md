@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string>
-#include <useful.h>
+#include <useful.h>	// libraries go here
+
 #include "readXYZ.h"
-#include "leapFrog.h"
 #include "readOpt.h"
 #include "readFF.h"
 #include "genVel.h"
+#include "leapFrog.h"
 
 using namespace std;
 using namespace xyzName;
@@ -18,84 +19,75 @@ using namespace genVelName;
 
 int main(int argc,char *argv[]){
 
-/* run with a path to the option file as an argument*/
-string optFile=argv[1];
-printf("Options file: %s\n",optFile.c_str());
+// run with a path to the option file as an argument
+ string optFile=argv[1];
+ printf("Options file: %s\n",optFile.c_str());
 
-/* default options */ 
- int steps=0;
- double dt=0.002;
- string initXYZ="init.xyz";
- string FF="ff.dat";
- string trajectory="traj.xyz";
+// read options file
+ readOptClass readOptObj;
+ readOptObj.optFile=optFile;
+ readOptObj.getOpt();
 
- readOptClass objectOpt;
- objectOpt.optFile=optFile;
- objectOpt.getOpt(steps,dt,initXYZ,FF,trajectory);	// set options from the options file
+// read initial XYZ file
+ printf("Initial XYZ file: %s\n",readOptObj.initXYZ.c_str());
 
- printf("Number of steps: %i\n",steps);
- printf("Time step: %f\n",dt);
- printf("Initial structure: %s\n",initXYZ.c_str());
- printf("Force field: %s\n",FF.c_str());
+ readXYZClass xyzObject;
+ xyzObject.initXYZ=readOptObj.initXYZ.c_str();
 
-/* read initial structure */
- readXYZClass xyzObject;	// xyzObject(var) would pass var to the constructor readXYZClass
- xyzObject.initXYZ=initXYZ.c_str();
+ xyzObject.getNum();
+ printf("Number of atoms: %i\n",xyzObject.num);
 
- int num=xyzObject.getNum();
- printf("Number of atoms: %i\n",num);
+ xyzObject.decType(); 	// declare atoms needs their number first
+ xyzObject.decXYZ(); 
 
- double* boxPtr=xyzObject.getBox();
- printf("Box size [A]: %f %f %f\n",boxPtr[0],boxPtr[1],boxPtr[2]);
+ xyzObject.getXYZ();
 
-
-/* initialize atom types and FF parameters: mass, sigma and epsilon */
-
- char type[num];
- double mass[num];
- double sig[num];
- double eps[num];
-
- for(int n=0;n<num;n++){
-  type[n]='X';
-  mass[n]=1.000;
-  sig[n]=1.000;
-  eps[n]=100.000;
+ for(int n=0;n<xyzObject.num;n++){
+  printf("Atom: %c %f %f %f\n",xyzObject.type[n],
+                               xyzObject.xyz[n][0],
+                               xyzObject.xyz[n][1],
+                               xyzObject.xyz[n][2]);
  }
 
- xyzObject.getXYZ(num,type);	// substitute atom types
+// read force field file
+ printf("Force field file: %s\n",readOptObj.fileFF.c_str());
 
-// for(int n=0;n<num;n++){
-//  printf("Atom type: %c\n",type[n]);
-// }
+ readFFClass readFFObj(xyzObject.num);
+ 
+ readFFObj.fileFF=readOptObj.fileFF;
+ readFFObj.setFF(xyzObject.num,xyzObject.type);		// set FF parameters
 
- double** xyzPtr=xyzObject.getXYZ(num,type);
- for(int n=0;n<num;n++){
-  printf("Coor: %f %f %f\n",xyzPtr[n][0],xyzPtr[n][1],xyzPtr[n][2]);
+ for(int n=0;n<xyzObject.num;n++){
+  printf("FF: %c %lf %lf %lf\n",xyzObject.type[n],
+                                readFFObj.mass[n],
+                                readFFObj.sig[n],
+                                readFFObj.eps[n]);
  }
 
+// generate velocities
+ genVelClass genVelObj(xyzObject.num);
+ genVelObj.genVel(xyzObject.num);
 
- readFFClass objectFF;
- objectFF.fileFF=FF;
- objectFF.setFF(num,type,mass,sig,eps);		// set FF parameters
-
- for(int n=0;n<num;n++){
-  printf("FF: %c %lf %lf %lf\n",type[n],mass[n],sig[n],eps[n]);
+ for(int n=0;n<xyzObject.num;n++){
+  printf("Vel: %f %f %f\n",genVelObj.vel[n][0],genVelObj.vel[n][1],genVelObj.vel[n][2]);
  }
 
- genVelClass genVelObj;
- double** velPtr=genVelObj.genVel(num);
-
- for(int n=0;n<num;n++){
-  printf("Vel: %f %f %f\n",velPtr[n][0],velPtr[n][1],velPtr[n][2]);
- }
-
-
-
+// run a simulation
  leapFrogClass leapFrogObject;
- leapFrogObject.type=type;
- leapFrogObject.trajectory=trajectory;
- leapFrogObject.step(dt,steps,xyzPtr,mass,sig,eps,velPtr,num);
+
+ leapFrogObject.steps=readOptObj.steps;
+ leapFrogObject.dt=readOptObj.dt;
+ leapFrogObject.saveFrq=readOptObj.saveFrq;
+ leapFrogObject.type=xyzObject.type;
+ leapFrogObject.box=readOptObj.box;
+ leapFrogObject.trajFile=readOptObj.trajFile;
+
+ printf("Number of steps: %i\n",readOptObj.steps);
+ printf("Time step: %f\n",readOptObj.dt);
+ printf("Save frequency: %i\n",readOptObj.saveFrq);
+ printf("Box size: %f %f %f\n",readOptObj.box[0],readOptObj.box[1],readOptObj.box[2]);
+
+ leapFrogObject.step(xyzObject.xyz,readFFObj.mass,readFFObj.sig,readFFObj.eps,genVelObj.vel,xyzObject.num);
 
  return 0;
 }

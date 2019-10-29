@@ -1,13 +1,31 @@
 #ifndef READOPT_H
 #define READOPT_H
 
-#include <string>	// do not use namespace in headers
+#include <string>
 
 namespace readOptName{
  class readOptClass{
   public:
    std::string optFile;
-   void getOpt(int&, double&,std::string&,std::string&,std::string&);
+
+   int steps;
+   double dt;
+   std::string initXYZ;		// do not use namespace in headers
+   std::string fileFF;
+   std::string trajFile;
+   int saveFrq;
+   double* box;
+
+   readOptClass(){	// set default options
+    steps=0;
+    dt=0.001;
+    initXYZ="init.xyz";
+    fileFF="ff.dat";
+    trajFile="traj.xyz";
+    saveFrq=10;
+    box=new double[3];
+   }
+   void getOpt();
  };
 }
 

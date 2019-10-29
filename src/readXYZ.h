@@ -1,24 +1,29 @@
 #ifndef READXYZ_H
 #define READXYZ_H
 
-#include <string>
+//#include <string>
+#include "readOpt.h"
 
-namespace xyzName{
- class readXYZClass{
+using namespace readOptName;
+
+namespace xyzName {
+ class readXYZClass : public readOptClass{
   public:
+   int num;
+   char* type;		// declare array of unknown size for atom types
+   double** xyz;
 
-   std::string initXYZ;		// initXYZ=file.xyz - static data cannot be initialized
-
-   double box[3];	// box size
-
-   readXYZClass(){		// the same name as class, called when object is being created
-    printf("constructor: some variables might be initialized here.\n");
+   void getNum();	// get number of atoms
+   void decType(){
+    type=new char[num];
    }
-
-   double** getXYZ(int, char*);
-   double* getBox();
-   int getNum();
-
+   void decXYZ(){
+    xyz=new double*[num];
+    for(int i=0;i<=num;i++){
+     xyz[i]=new double[3];
+    }
+   }
+   double** getXYZ();
   private:
    char ch;		// variable known within the class
  };

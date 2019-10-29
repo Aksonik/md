@@ -39,16 +39,18 @@ unistd.h
 -
 string
 -
+cmath
+-
 readXYZ.h
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h
 leapFrog.h
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/leapFrog.h
-cmath
--
 
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/leapFrog.h
 string
 -
+readOpt.h
+/home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readOpt.h
 
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/main.cpp
 stdio.h
@@ -63,14 +65,14 @@ useful.h
 -
 readXYZ.h
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h
-leapFrog.h
-/home/nawrocki/Documents/scr/git/cpp_project/md/md/src/leapFrog.h
 readOpt.h
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readOpt.h
 readFF.h
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readFF.h
 genVel.h
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/genVel.h
+leapFrog.h
+/home/nawrocki/Documents/scr/git/cpp_project/md/md/src/leapFrog.h
 
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readFF.cpp
 stdio.h
@@ -85,10 +87,12 @@ useful.h
 -
 readFF.h
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readFF.h
+readXYZ.h
+/home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h
 
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readFF.h
-string
--
+readXYZ.h
+/home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h
 
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readOpt.cpp
 iostream
@@ -121,6 +125,6 @@ readXYZ.h
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h
 
 /home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readXYZ.h
-string
--
+readOpt.h
+/home/nawrocki/Documents/scr/git/cpp_project/md/md/src/readOpt.h
 
