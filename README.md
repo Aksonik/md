@@ -86,3 +86,5 @@ K 35.0 12.000 0.200
 ```
 
 where provided are particle types (*A*, *B*, *C*), mass, sigma and epsilon.
+
+The work was done at the Michigan State University.
